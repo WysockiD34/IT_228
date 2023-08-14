@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <title>Class Selection</title>
+
+    <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+
+        <div id="container">
+
+            <div id="image">
+                <h1 id="name">Bandit</h1>
+                <button id="back-button" onclick="goBack()"><a href="start.html">Back</a></button>
+                <img id="img" src="images/bandit.png" alt="">
+            </div>
+
+            <div id="controls">
+                <button id="bandit" onclick="changeClass('bandit')">Bandit</button>
+                <button id="sorcerer" onclick="changeClass('sorcerer')">Sorcerer</button>
+                <button id="knight" onclick="changeClass('knight')">Knight</button>
+                <button id="warrior" onclick="changeClass('warrior')">Warrior</button>
+                <button id="deprived" onclick="changeClass('deprived')">Deprived</button>
+            </div>
+
+        </div>
+
+        <div id="info">
+            <h2>Class Selection</h2>
+            <p>Select Character Base</p>
+            <input type="text" id="playerName" placeholder="Enter your name">
+            <h2 id="classStats"></h2>
+        </div>
+
+    
+    </body>
+
+    <script>
+
+
+const classStats = {
+    bandit: {
+        health: 8,
+        endurance: 10,
+        stealth: 12,
+        dexterity: 11,
+        strength: 5,
+        luck: 10,
+        intelligence: 6,
+        focus: 10
+    },
+    sorcerer: {
+        health: 7,
+        endurance: 8,
+        stealth: 7,
+        dexterity: 9,
+        strength: 6,
+        luck: 9,
+        intelligence: 15,
+        focus: 15
+    },
+    knight: {
+        health: 12,
+        endurance: 12,
+        stealth: 3,
+        dexterity: 10,
+        strength: 10,
+        luck: 4,
+        intelligence: 5,
+        focus: 7
+    },
+    warrior: {
+        health: 10,
+        endurance: 15,
+        stealth: 2,
+        dexterity: 14,
+        strength: 15,
+        luck: 2,
+        intelligence: 3,
+        focus: 7
+    },
+    deprived: {
+        health: 1,
+        endurance: 1,
+        stealth: 1,
+        dexterity: 1,
+        strength: 1,
+        luck: 1,
+        intelligence: 1,
+        focus: 1
+    },
+};
+
+changeClass = (className) => {
+    switch (className) {
+        case "sorcerer":
+            document.getElementById("img").src = "images/sorcerer.png";
+            document.getElementById("name").innerHTML = "Sorcerer";
+            break;
+        case "knight":
+            document.getElementById("img").src = "images/knight.png";
+            document.getElementById("name").innerHTML = "Knight";
+            break;
+        case "warrior":
+            document.getElementById("img").src = "images/warrior.png";
+            document.getElementById("name").innerHTML = "Warrior";
+            break;
+        case "deprived":
+            document.getElementById("img").src = "images/wretch.png";
+            document.getElementById("name").innerHTML = "Deprived";
+            break;
+        case "bandit":
+            document.getElementById("img").src = "images/bandit.png";
+            document.getElementById("name").innerHTML = "Bandit";
+            break;
+    }
+
+    const statsDisplay = document.getElementById("classStats");
+    const playerName = document.getElementById("playerName").value;
+    const stats = classStats[className];
+    statsDisplay.innerHTML = `
+        Health: ${stats.health}<br>
+        Endurance: ${stats.endurance}<br>
+        Stealth: ${stats.stealth}<br>
+        Dexterity: ${stats.dexterity}<br>
+        Strength: ${stats.strength}<br>
+        Luck: ${stats.luck}<br>
+        Intelligence: ${stats.intelligence}<br>
+        Focus: ${stats.focus}
+        `;
+}
+
+    goBack = () => {
+        window.location.href = "start.html";
+    };
+
+    window.onload = () => {
+    changeClass("bandit");
+    };
+    
+    </script>
+
+</html>
